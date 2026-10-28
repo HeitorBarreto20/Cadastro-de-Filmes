@@ -1,0 +1,95 @@
+
+{% extends "base.html" %}
+
+{% block titulo %}Filmes cadastrados | Catálogo de Filmes{% endblock %}
+
+{% block conteudo %}
+
+<section class="secao-filmes">
+    <div class="cabecalho-secao">
+        <div>
+            <h2>Filmes cadastrados</h2>
+            <p class="descricao">
+                Organize seus filmes favoritos em um só lugar.
+            </p>
+        </div>
+
+        <a href="{{ url_for('novo_filme') }}" class="botao botao-principal">
+            + Novo filme
+        </a>
+    </div>
+
+    {% if filmes %}
+
+        <div class="lista-filmes">
+            {% for filme in filmes %}
+                <article class="cartao-filme">
+
+                    <div class="filme-informacoes">
+                        <h3>{{ filme['titulo'] }}</h3>
+
+                        <p>
+                            <strong>Gênero:</strong>
+                            {{ filme['genero'] }}
+                        </p>
+
+                        <p>
+                            <strong>Ano de lançamento:</strong>
+                            {{ filme['ano'] }}
+                        </p>
+
+                        <p class="nota-filme">
+                            <strong>Nota:</strong>
+                            <span>{{ filme['nota'] }}/10</span>
+                        </p>
+                    </div>
+
+                    <div class="acoes-filme">
+                        <a
+                            href="{{ url_for('editar_filme', id=filme['id']) }}"
+                            class="botao botao-editar"
+                        >
+                            Editar
+                        </a>
+
+                        <form
+                            action="{{ url_for('excluir_filme', id=filme['id']) }}"
+                            method="POST"
+                            class="form-excluir"
+                            onsubmit="return confirm('Deseja realmente excluir este filme?');"
+                        >
+                            <button
+                                type="submit"
+                                class="botao botao-excluir"
+                            >
+                                Excluir
+                            </button>
+                        </form>
+                    </div>
+
+                </article>
+            {% endfor %}
+        </div>
+
+    {% else %}
+
+        <div class="estado-vazio">
+            <h3>Nenhum filme cadastrado</h3>
+
+            <p>
+                Seu catálogo ainda está vazio.
+                Que tal cadastrar o primeiro filme?
+            </p>
+
+            <a
+                href="{{ url_for('novo_filme') }}"
+                class="botao botao-principal"
+            >
+                Cadastrar primeiro filme
+            </a>
+        </div>
+
+    {% endif %}
+</section>
+
+{% endblock %}

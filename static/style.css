@@ -1,0 +1,481 @@
+
+/* ========================================
+   CATÁLOGO DE FILMES
+   Tema: bege e vinho escuro
+======================================== */
+
+/* 1. Variáveis de cores */
+
+:root {
+    --bege-claro: #f7f0e5;
+    --bege: #eadcc8;
+    --bege-escuro: #d8c3a5;
+
+    --vinho: #4b1020;
+    --vinho-escuro: #310914;
+    --vinho-medio: #702638;
+
+    --texto: #2f2424;
+    --texto-suave: #766666;
+
+    --branco: #fffdf9;
+    --borda: #e2d2c0;
+
+    --sombra: 0 8px 24px rgba(49, 9, 20, 0.08);
+}
+
+/* 2. Configurações gerais */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+
+    color: var(--texto);
+    background: var(--bege-claro);
+}
+
+a {
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin-top: 0;
+}
+
+/* 3. Cabeçalho */
+
+.cabecalho {
+    background: linear-gradient(
+        135deg,
+        var(--vinho-escuro),
+        var(--vinho)
+    );
+
+    color: var(--branco);
+    padding: 28px 20px 22px;
+    text-align: center;
+
+    box-shadow: 0 5px 18px rgba(49, 9, 20, 0.16);
+}
+
+.cabecalho h1 {
+    margin-bottom: 16px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    letter-spacing: 0.3px;
+}
+
+/* 4. Menu */
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.menu a {
+    color: #f7eadd;
+    font-weight: 600;
+
+    padding: 8px 15px;
+    border-radius: 30px;
+
+    transition: background 0.2s, color 0.2s;
+}
+
+.menu a:hover {
+    background: rgba(255, 255, 255, 0.13);
+    color: white;
+}
+
+/* 5. Conteúdo principal */
+
+.conteudo {
+    width: min(920px, 92%);
+    margin: 38px auto;
+    flex: 1;
+}
+
+.conteudo h2 {
+    color: var(--vinho);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    margin-bottom: 8px;
+}
+
+.conteudo h3 {
+    color: var(--vinho);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+}
+
+.descricao {
+    color: var(--texto-suave);
+    margin-bottom: 0;
+}
+
+/* 6. Cabeçalho das seções */
+
+.cabecalho-secao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    margin-bottom: 28px;
+}
+
+.cabecalho-secao h2 {
+    margin-bottom: 5px;
+}
+
+.cabecalho-formulario {
+    margin-bottom: 25px;
+}
+
+/* 7. Botões */
+
+.botao {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+
+    min-height: 42px;
+    padding: 10px 16px;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 0.94rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s,
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+.botao:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(49, 9, 20, 0.12);
+}
+
+.botao:focus-visible {
+    outline: 3px solid var(--bege-escuro);
+    outline-offset: 3px;
+}
+
+/* Botão principal */
+
+.botao-principal {
+    background: var(--vinho);
+    color: white;
+}
+
+.botao-principal:hover {
+    background: var(--vinho-escuro);
+}
+
+/* Botão editar */
+
+.botao-editar {
+    background: #9a6b32;
+    color: white;
+}
+
+.botao-editar:hover {
+    background: #805524;
+}
+
+/* Botão excluir */
+
+.botao-excluir {
+    background: #8b2635;
+    color: white;
+}
+
+.botao-excluir:hover {
+    background: #6f1725;
+}
+
+/* Botão cancelar */
+
+.botao-secundario {
+    background: var(--bege);
+    color: var(--vinho);
+    border-color: var(--borda);
+}
+
+.botao-secundario:hover {
+    background: var(--bege-escuro);
+}
+
+/* 8. Lista de filmes */
+
+.lista-filmes {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+/* 9. Cartão individual do filme */
+
+.cartao-filme {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+
+    padding: 23px 25px;
+
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-left: 5px solid var(--vinho);
+    border-radius: 12px;
+
+    box-shadow: var(--sombra);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+.cartao-filme:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 13px 28px rgba(49, 9, 20, 0.11);
+}
+
+.filme-informacoes {
+    min-width: 0;
+}
+
+.filme-informacoes h3 {
+    overflow-wrap: anywhere;
+    margin-bottom: 12px;
+}
+
+.filme-informacoes p {
+    color: var(--texto-suave);
+    margin-bottom: 5px;
+}
+
+.filme-informacoes strong {
+    color: var(--texto);
+}
+
+.nota-filme span {
+    display: inline-block;
+    background: var(--bege);
+    color: var(--vinho);
+    font-weight: 700;
+
+    padding: 2px 9px;
+    border-radius: 6px;
+}
+
+/* 10. Botões de ação dos filmes */
+
+.acoes-filme {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+    flex-shrink: 0;
+}
+
+.form-excluir {
+    margin: 0;
+}
+
+/* 11. Estado vazio */
+
+.estado-vazio {
+    padding: 38px 24px;
+    text-align: center;
+
+    background: var(--branco);
+    border: 1px dashed var(--bege-escuro);
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+}
+
+.estado-vazio h3 {
+    margin-bottom: 10px;
+}
+
+.estado-vazio p {
+    color: var(--texto-suave);
+    margin-bottom: 22px;
+}
+
+/* 12. Formulário de cadastro e edição */
+
+.formulario-filme {
+    padding: 30px;
+
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+
+    box-shadow: var(--sombra);
+}
+
+.campo-formulario {
+    margin-bottom: 22px;
+}
+
+.campo-formulario label {
+    display: block;
+    margin-bottom: 8px;
+
+    color: var(--vinho);
+    font-weight: 700;
+}
+
+.campo-formulario input {
+    display: block;
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid #d5c3b1;
+    border-radius: 8px;
+
+    background: #fffefa;
+    color: var(--texto);
+
+    font-family: inherit;
+    font-size: 1rem;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.campo-formulario input::placeholder {
+    color: #a29285;
+}
+
+.campo-formulario input:focus {
+    outline: none;
+    border-color: var(--vinho-medio);
+    box-shadow: 0 0 0 3px rgba(112, 38, 56, 0.13);
+}
+
+/* 13. Ações do formulário */
+
+.acoes-formulario {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    margin-top: 28px;
+    padding-top: 22px;
+
+    border-top: 1px solid var(--borda);
+}
+
+/* 14. Rodapé */
+
+.rodape {
+    margin-top: auto;
+    padding: 22px 16px;
+
+    background: var(--vinho-escuro);
+    color: var(--bege);
+
+    text-align: center;
+    font-size: 0.92rem;
+}
+
+.rodape p {
+    margin: 0;
+}
+
+/* 15. Responsividade para celulares */
+
+@media (max-width: 650px) {
+    .cabecalho {
+        padding: 23px 14px 19px;
+    }
+
+    .menu {
+        gap: 5px;
+    }
+
+    .menu a {
+        padding: 8px 11px;
+        font-size: 0.92rem;
+    }
+
+    .conteudo {
+        width: 92%;
+        margin: 27px auto;
+    }
+
+    .cabecalho-secao {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .cartao-filme {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 18px;
+        padding: 19px;
+    }
+
+    .acoes-filme {
+        width: 100%;
+    }
+
+    .formulario-filme {
+        padding: 20px;
+    }
+
+    .acoes-formulario {
+        flex-direction: column;
+    }
+
+    .acoes-formulario .botao {
+        width: 100%;
+    }
+}
+
+/* 16. Redução de animações */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto;
+        transition: none;
+    }
+}
